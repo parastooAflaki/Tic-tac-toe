@@ -20,17 +20,21 @@ public class main {
 
         while (game.gameMap.checkIfGameIsFinished() == '-') {
 
-            System.out.println("");
+
             game.gameMap.print();
-            if (turn == 0)
+            if (turn == 0) {
+                System.out.println("\n"+"pc's turn");
                 game.findBestMove();
-            else
+            }
+            else{
+                System.out.println("\n"+"your turn");
                 game.playerPlays();
+            }
+
             turn = reverseTurn(turn);
 
 
         }
-        System.out.println("");
         game.gameMap.print();
         if (game.gameMap.checkIfGameIsFinished() == 'D')
             System.out.println("Draw!");
