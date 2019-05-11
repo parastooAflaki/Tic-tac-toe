@@ -26,7 +26,7 @@ public class Map{
 
 
 
-    boolean IsMoveAvailable(int row,int column) {
+    boolean isMoveAvailable(int row,int column) {
 
         if (table[row][column] == '-')
             return true;

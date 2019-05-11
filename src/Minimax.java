@@ -22,13 +22,13 @@ public class Minimax {
         for (int i = 0; i < column; i++)
             for (int j = 0; j < row; j++)
 
-                if (gameMap.IsMoveAvailable(i, j)) {
+                if (gameMap.isMoveAvailable(i, j)) {
 
                     Move tempMove = new Move(i, j, 0);
                     gameMap.setTable(i, j, opponentChar);
                     tempMove.score = minimax(0, true);
                     gameMap.undoSetTable(i, j);
-                    System.out.println("#" + i + " " + j + " " + tempMove.score);
+
                     bestMove = updateBestMove(tempMove, bestMove);
                 }
         return bestMove;
@@ -52,7 +52,7 @@ public class Minimax {
         for (int i = 0; i < column; i++)
             for (int j = 0; j < row; j++)
 
-                if (gameMap.IsMoveAvailable(i, j)) {
+                if (gameMap.isMoveAvailable(i, j)) {
 
                     gameMap.setTable(i, j, playerChar);
                     bestscore = Math.max(bestscore, minimax(depth + 1, !maxplayer));
@@ -67,7 +67,7 @@ public class Minimax {
         for (int i = 0; i < column; i++)
             for (int j = 0; j < row; j++)
 
-                if (gameMap.IsMoveAvailable(i, j)) {
+                if (gameMap.isMoveAvailable(i, j)) {
 
                     gameMap.setTable(i, j, opponentChar);
                     bestscore = Math.min(bestscore, minimax(depth + 1, !maxplayer));

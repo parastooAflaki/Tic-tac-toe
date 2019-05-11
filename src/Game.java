@@ -14,41 +14,41 @@ public class Game {
 
     void findBestMove() {
 
-        gameMap.print();
-        System.out.printf("'pc's turn");
 
         minimax = new Minimax(gameMap, switchPlayer(pcChar), (pcChar));
         Move pcMove = minimax.play();
 
-        System.out.println(pcMove.row + " " + pcMove.column);
+       // System.out.println(pcMove.row + " " + pcMove.column);
         gameMap.setTable(pcMove.row, pcMove.column, pcChar);
 
     }
 
 
     char switchPlayer(char playerChar) {
-        if (playerChar == 'X')
-            return 'O';
-        return 'X';
+        if (playerChar == 'x')
+            return 'o';
+        return 'x';
 
     }
 
     void playerPlays() {
         Scanner input = new Scanner(System.in);
-        System.out.println("your turn");
 
         while (true) {
 
-            gameMap.print();
             System.out.println("Enter Column & Row (0 based)");
 
             int row = input.nextInt();
             int column = input.nextInt();
 
-            if (gameMap.IsMoveAvailable(row, column)) {
+            if(row>2 || column >2 || !gameMap.isMoveAvailable(row,column))
+                System.out.println("invalid choice");
+
+            else if (gameMap.isMoveAvailable(row, column)) {
                 gameMap.setTable(row, column, playerChar);
                 break;
             }
+
         }
 
 
